@@ -1,9 +1,19 @@
 FROM node:latest
 
-    RUN apt-get update && apt-get install -y \
-        git
-        
-        
-    RUN git clone "https://github.com/angular/angular-seed.git" \
-        && cd angular-seed \
-        && npm install  && npm start
+MAINTAINER Achyut Dev
+
+ENV NODE_ENV=production
+
+RUN mkdir -p /var/www/app
+
+WORKDIR /var/www/app
+
+RUN npm  install -g node-gyp
+RUN npm  install -g @angular/cli
+
+COPY . /var/www/app
+RUN npm install
+
+CMD [ "ng", "serve" ]
+
+EXPOSE 80
