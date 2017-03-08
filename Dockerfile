@@ -16,4 +16,4 @@ RUN npm install
 
 CMD [ "ng", "serve" ]
 
-EXPOSE 80
+EXPOSE 4200
